@@ -1,86 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ohm's Cleaning Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fbfc;
       color: #14202E;
+      line-height: 1.6;
     }
     header {
       background-color: #091235;
       color: white;
-      padding: 20px;
       text-align: center;
+      padding: 40px 20px;
     }
-    .logo {
-      max-width: 200px;
-      margin: 10px auto;
+    header img {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #88A9C3;
     }
     section {
-      padding: 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
+      padding: 40px 20px;
+    }
+    .services, .contact, .gallery {
+      margin-top: 40px;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #14202E;
+      padding-bottom: 10px;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
     }
     .gallery {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
     .gallery img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .contact p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
     }
     footer {
       background-color: #2B4257;
       color: white;
-      padding: 15px;
       text-align: center;
-    }
-    .contact {
-      font-size: 1.1em;
-      line-height: 1.6em;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="Main Branding.png" alt="Ohm's Logo" class="logo" />
+    <img src="Main Branding.png" alt="Ohm's Logo">
     <h1>Ohm's Cleaning Services</h1>
-    <p>Window Cleaning • Pressure Washing • Gutter Cleaning • Solar Panel Cleaning • More</p>
+    <p class="subtitle">Window Cleaning • Pressure Washing • Gutter Cleaning • Solar Panel Cleaning • More</p>
   </header>
 
-  <section>
+  <section class="about">
     <h2>About Us</h2>
-    <p>At Ohm's Cleaning Services, we take pride in providing professional, faith-driven home exterior cleaning with high attention to detail and customer satisfaction. Based in Henderson, NV, we serve local homeowners with exceptional window cleaning, pressure washing, and more — always with honesty, quality, and care.</p>
+    <p>Based in Henderson, NV, Ohm's Cleaning Services delivers professional, faith-driven exterior cleaning with unmatched detail and care. We bring homes back to life through spotless windows, clean panels, and sharp curb appeal. Trustworthy, neighbor-approved, and always honest.</p>
   </section>
 
-  <section>
-    <h2>Before & After</h2>
-    <div class="gallery">
-      <img src="Before after 4.jpg" alt="Before and After 1">
-      <img src="Before and after 3.jpg" alt="Before and After 2">
-      <img src="Window cleaning b&a.PNG" alt="Before and After 3">
-      <img src="Window cleaning b & a.PNG" alt="Before and After 4">
-    </div>
+  <section class="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Residential Window Cleaning (Exterior & Interior)</li>
+      <li>Screen & Track Cleaning</li>
+      <li>Pressure Washing (Driveways, Walls, Patios)</li>
+      <li>Gutter Cleaning</li>
+      <li>Solar Panel Cleaning</li>
+      <li>Recurring Exterior Maintenance Packages</li>
+    </ul>
   </section>
 
-  <section>
+  <section class="gallery">
+    <h2>Before & After Gallery</h2>
+    <img src="Before after 4.jpg" alt="Before and After 1">
+    <img src="Before and after 3.jpg" alt="Before and After 2">
+    <img src="Window cleaning b&a.PNG" alt="Before and After 3">
+    <img src="Window cleaning b & a.PNG" alt="Before and After 4">
+  </section>
+
+  <section class="contact">
     <h2>Contact Us</h2>
-    <div class="contact">
-      <p><strong>Phone:</strong> 702-201-3944</p>
-      <p><strong>Email:</strong> ohmscleaning@gmail.com</p>
-    </div>
+    <p><strong>Phone:</strong> 702-201-3944</p>
+    <p><strong>Email:</strong> ohmscleaning@gmail.com</p>
   </section>
 
   <footer>
-    &copy; 2025 Ohm's Cleaning Services. All rights reserved.
+    &copy; 2025 Ohm's Cleaning Services. Professional, Faith-Driven, Trusted by Locals.
   </footer>
 </body>
 </html>
