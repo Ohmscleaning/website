@@ -22,6 +22,21 @@
       color: white;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
+    }
+    nav {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    nav a {
+      color: #88A9C3;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav a:hover {
+      color: white;
     }
     header img {
       max-width: 180px;
@@ -39,9 +54,9 @@
     section {
       max-width: 1000px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 60px 20px 40px;
     }
-    .services, .contact, .gallery {
+    .services, .contact, .gallery, .about, .cta {
       margin-top: 40px;
     }
     h2 {
@@ -68,6 +83,36 @@
       font-size: 1.1rem;
       margin-bottom: 10px;
     }
+    .cta {
+      background-color: #2B4257;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 8px;
+      margin-top: 80px;
+    }
+    .cta h2 {
+      border: none;
+      font-size: 2rem;
+    }
+    .cta p {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+    .cta a {
+      background: #88A9C3;
+      color: #091235;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    .cta a:hover {
+      background: white;
+      color: #2B4257;
+    }
     footer {
       background-color: #2B4257;
       color: white;
@@ -81,14 +126,20 @@
     <img src="Main Branding.png" alt="Ohm's Logo">
     <h1>Ohm's Cleaning Services</h1>
     <p class="subtitle">Window Cleaning • Pressure Washing • Gutter Cleaning • Solar Panel Cleaning • More</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section class="about">
+  <section class="about" id="about">
     <h2>About Us</h2>
     <p>Based in Henderson, NV, Ohm's Cleaning Services delivers professional, faith-driven exterior cleaning with unmatched detail and care. We bring homes back to life through spotless windows, clean panels, and sharp curb appeal. Trustworthy, neighbor-approved, and always honest.</p>
   </section>
 
-  <section class="services">
+  <section class="services" id="services">
     <h2>Our Services</h2>
     <ul>
       <li>Residential Window Cleaning (Exterior & Interior)</li>
@@ -100,7 +151,7 @@
     </ul>
   </section>
 
-  <section class="gallery">
+  <section class="gallery" id="gallery">
     <h2>Before & After Gallery</h2>
     <img src="Before after 4.jpg" alt="Before and After 1">
     <img src="Before and after 3.jpg" alt="Before and After 2">
@@ -108,10 +159,16 @@
     <img src="Window cleaning b & a.PNG" alt="Before and After 4">
   </section>
 
-  <section class="contact">
+  <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <p><strong>Phone:</strong> 702-201-3944</p>
     <p><strong>Email:</strong> ohmscleaning@gmail.com</p>
+  </section>
+
+  <section class="cta">
+    <h2>Get Your Free Estimate Today!</h2>
+    <p>Fast quotes, honest pricing, and same-day service available.</p>
+    <a href="mailto:ohmscleaning@gmail.com">Request a Quote</a>
   </section>
 
   <footer>
