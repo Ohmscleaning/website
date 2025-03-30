@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ohm's Cleaning Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="White Main Logo.png" type="image/png">
+<meta name="description" content="Professional window and exterior cleaning in Henderson, NV. Faith-based, licensed, and trusted.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&family=Marcellus&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,6 +14,7 @@
       box-sizing: border-box;
     }
     body {
+      font-family: 'Marcellus', serif;
       font-family: 'Playfair Display', serif;
       font-family: 'Inter', sans-serif;
       background-color: #f9fbfc;
@@ -159,7 +162,22 @@
       height: 100%;
       z-index: -1;
     }
-  </style>
+    html {
+    scroll-behavior: smooth;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .gallery img:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease;
+  }
+  section {
+    margin-bottom: 60px;
+  }
+</style>
 </head>
 <body>
   <header>
@@ -172,7 +190,9 @@
   <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
-<a href="#quote" class="cta-button" style="margin-top: 10px; display: inline-block; background: #88A9C3; color: #091235; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none;">Get a Free Quote</a>
+<div style="margin-top: 20px;">
+  <a href="#quote" class="cta-button" style="background: #88A9C3; color: #091235; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none;">Get a Free Quote</a>
+</div>
   </header>
 
   <section class="about" id="about">
