@@ -64,7 +64,23 @@
       font-weight: bold;
       text-align: center;
     }
-    #leadForm { display: none; margin-top: 2rem; }
+    #bookNow {
+      display: none;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    #bookNow a {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #88A9C3;
+      color: #091235;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    #bookNow a:hover {
+      background-color: #e6ecf3;
+    }
     .back-home {
       display: block;
       text-align: center;
@@ -97,14 +113,6 @@
         <option value="yes">Yes (+$25)</option>
       </select>
 
-      <button type="submit">See My Estimated Quote</button>
-    </form>
-
-    <div id="quoteResult"></div>
-
-    <form id="leadForm">
-      <p style="text-align:center;">✅ Let’s get you booked! Fill out your info and we’ll reach out shortly to confirm your quote and schedule.</p>
-
       <label for="name">Your Name:</label>
       <input type="text" id="name" required>
 
@@ -117,10 +125,15 @@
       <label for="email">Email:</label>
       <input type="email" id="email" required>
 
-      <button type="submit">Send My Info</button>
+      <button type="submit">See My Estimated Quote</button>
     </form>
 
-    <div id="thankYou"></div>
+    <div id="quoteResult"></div>
+
+    <div id="bookNow">
+      <a href="https://calendly.com/ohmscleaningservice" target="_blank">Book Your Cleaning Now</a>
+    </div>
+
     <a class="back-home" href="index.html">← Back to Homepage</a>
   </div>
 
@@ -131,12 +144,13 @@
       const stories = document.getElementById("stories").value;
       const windows = parseInt(document.getElementById("windows").value);
       const screenAdd = document.getElementById("screenClean").value;
+      const name = document.getElementById("name").value;
 
       let price = 0;
 
       if (windows < 10 || windows > 35) {
-        document.getElementById("quoteResult").innerHTML = "Thanks! For homes with under 10 or more than 35 windows, please <a href='mailto:ohmscleaning@gmail.com'>contact us</a> directly for a quote.";
-        document.getElementById("leadForm").style.display = 'none';
+        document.getElementById("quoteResult").innerHTML = `Thanks, ${name}! For homes with under 10 or more than 35 windows, please <a href='mailto:ohmscleaning@gmail.com'>contact us</a> directly for a quote.`;
+        document.getElementById("bookNow").style.display = 'none';
         return;
       }
 
@@ -152,16 +166,9 @@
 
       if (screenAdd === "yes") price += 25;
 
-      document.getElementById("quoteResult").innerText = `Your estimated window cleaning is $${price}.`;
-      document.getElementById("leadForm").style.display = 'block';
-    });
-
-    document.getElementById("leadForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      document.getElementById("thankYou").innerText = "✅ Thank you! Your info has been received. We'll reach out shortly to confirm your quote.";
-      document.getElementById("leadForm").reset();
+      document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Let's go ahead and get you scheduled.`;
+      document.getElementById("bookNow").style.display = 'block';
     });
   </script>
 </body>
 </html>
-
