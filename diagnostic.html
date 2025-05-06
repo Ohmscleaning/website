@@ -60,9 +60,14 @@
     }
     #quoteResult {
       margin-top: 2rem;
-      font-size: 1.1rem;
+      padding: 1.5rem;
+      font-size: 1.3rem;
       font-weight: bold;
       text-align: center;
+      background-color: #dff0e8;
+      border: 2px solid #88A9C3;
+      border-radius: 10px;
+      color: #0b3d2e;
     }
     .back-home {
       display: block;
@@ -102,12 +107,6 @@
         <option value="yes">Yes</option>
       </select>
 
-      <label for="lastCleaned">When were your windows last cleaned?</label>
-      <select id="lastCleaned" required>
-        <option value="<6mo">Less than 6 months ago</option>
-        <option value=">6mo">More than 6 months ago (+$25)</option>
-      </select>
-
       <label for="name">Your Name:</label>
       <input type="text" id="name" required>
 
@@ -135,7 +134,6 @@
       const windows = parseInt(document.getElementById("windows").value);
       const screenAdd = document.getElementById("screenClean").value;
       const interiorAdd = document.getElementById("interiorAdd").value;
-      const lastCleaned = document.getElementById("lastCleaned").value;
       const name = document.getElementById("name").value;
       const address = document.getElementById("address").value;
       const phone = document.getElementById("phone").value;
@@ -166,9 +164,7 @@
         else if (windows >= 26 && windows <= 35) price += 179;
       }
 
-      if (lastCleaned === ">6mo") price += 25;
-
-      const quoteMessage = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nStories: ${stories}\nWindows: ${windows}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nLast Cleaned: ${lastCleaned}\nEstimated Quote: $${price}`;
+      const quoteMessage = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nStories: ${stories}\nWindows: ${windows}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nEstimated Quote: $${price}`;
 
       fetch("https://formspree.io/f/xgvkknzp", {
         method: "POST",
@@ -187,7 +183,7 @@
       .then(response => response.json())
       .then(data => {
         console.log("Formspree response:", data);
-        document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Redirecting you to schedule...`;
+        document.getElementById("quoteResult").innerHTML = `<strong>Thanks, ${name}!</strong><br>Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price}</span>.<br><em>Redirecting you to schedule now...</em>`;
         setTimeout(() => {
           window.location.href = "https://calendly.com/ohmscleaningservice";
         }, 5000);
@@ -200,4 +196,3 @@
   </script>
 </body>
 </html>
-
