@@ -190,36 +190,44 @@
     <a href="#quote" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
   </div>
 </div>
-    </div>
-    <div class="service-block">
-      <img src="man with wfp.jpg" alt="Advanced Cleaning Equipment"/>
-      <h3>Advanced Equipment</h3>
-      <p>Water-fed pole systems and pro-grade tools for safe, streak-free cleaning.</p>
-    </div>
   </div>
 </section>
 
 <section id="gallery">
   <h2>Gallery of Our Work</h2>
-  <div class="gallery-carousel" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding-bottom: 10px;">
-    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
-      <img src="Before after 4.jpg" alt="Before and After 1" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
-      <h3>Window Cleaning – Sun City</h3>
+  <div class="gallery-carousel-wrapper" style="position: relative; max-width: 800px; margin: auto;">
+    <div id="galleryItems" style="display: flex; overflow: hidden; width: 100%;">
+      <div class="gallery-item" style="min-width: 100%; flex-shrink: 0; text-align: center;">
+        <img src="Before after 4.jpg" alt="Before and After 1" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+        <h3>Window Cleaning – Sun City</h3>
+      </div>
+      <div class="gallery-item" style="min-width: 100%; text-align: center;">
+        <img src="Before and after 3.jpg" alt="Before and After 2" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+        <h3>Exterior Window Wash – Anthem</h3>
+      </div>
+      <div class="gallery-item" style="min-width: 100%; text-align: center;">
+        <img src="Window cleaning b&a.PNG" alt="Before and After 3" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+        <h3>Deep Window Cleaning – Henderson</h3>
+      </div>
+      <div class="gallery-item" style="min-width: 100%; text-align: center;">
+        <img src="Window cleaning b & a.PNG" alt="Before and After 4" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+        <h3>Hard Water Window Restoration</h3>
+      </div>
     </div>
-    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
-      <img src="Before and after 3.jpg" alt="Before and After 2" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
-      <h3>Exterior Window Wash – Anthem</h3>
-    </div>
-    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
-      <img src="Window cleaning b&a.PNG" alt="Before and After 3" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
-      <h3>Deep Window Cleaning – Henderson</h3>
-    </div>
-    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
-      <img src="Window cleaning b & a.PNG" alt="Before and After 4" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
-      <h3>Hard Water Window Restoration</h3>
-    </div>
+    <button onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); font-size: 2rem; background: none; border: none; cursor: pointer;">⬅️</button>
+    <button onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); font-size: 2rem; background: none; border: none; cursor: pointer;">➡️</button>
   </div>
 </section>
+<script>
+  let index = 0;
+  const items = document.getElementById('galleryItems');
+  function moveSlide(step) {
+    const total = items.children.length;
+    index = (index + step + total) % total;
+    items.style.transform = `translateX(-${index * 100}%)`;
+    items.style.transition = 'transform 0.5s ease';
+  }
+</script>
 
 <section id="contact">
   <h2>Contact Us</h2>
