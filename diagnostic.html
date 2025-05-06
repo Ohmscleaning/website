@@ -104,9 +104,8 @@
 
       <label for="lastCleaned">When were your windows last cleaned?</label>
       <select id="lastCleaned" required>
-        <option value="<6mo">Within the last 6 months</option>
-        <option value="6-8mo">6–8 months ago</option>
-        <option value=">8mo">More than 8 months ago</option>
+        <option value="<6mo">Less than 6 months ago</option>
+        <option value=">6mo">More than 6 months ago (+$25)</option>
       </select>
 
       <label for="name">Your Name:</label>
@@ -167,7 +166,7 @@
         else if (windows >= 26 && windows <= 35) price += 179;
       }
 
-      if (lastCleaned === ">8mo") price += 50;
+      if (lastCleaned === ">6mo") price += 25;
 
       const quoteMessage = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nStories: ${stories}\nWindows: ${windows}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nLast Cleaned: ${lastCleaned}\nEstimated Quote: $${price}`;
 
@@ -201,5 +200,4 @@
   </script>
 </body>
 </html>
-
 
