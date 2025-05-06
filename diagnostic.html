@@ -4,13 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instant Quote | Ohm's Cleaning Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&family=Marcellus&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Marcellus', serif;
       background-color: #f9fbfc;
@@ -42,10 +38,8 @@
       flex-direction: column;
       gap: 1rem;
     }
-    label {
-      font-weight: bold;
-    }
-    input, select, textarea {
+    label { font-weight: bold; }
+    input, select {
       padding: 0.6rem;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -64,13 +58,13 @@
     button:hover {
       background-color: #e6ecf3;
     }
-    #result {
+    #quoteResult, #thankYou {
       margin-top: 2rem;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
-      color: green;
       text-align: center;
     }
+    #leadForm { display: none; margin-top: 2rem; }
     .back-home {
       display: block;
       text-align: center;
@@ -83,7 +77,7 @@
 </head>
 <body>
   <div class="container">
-    <img src="White Main Logo.png" alt="Ohm's Logo" class="logo">
+    <img src="Main Branding.png" alt="Ohm's Cleaning Services" class="logo">
     <h1>Get Your Instant Window Cleaning Quote</h1>
 
     <form id="quoteForm">
@@ -95,26 +89,21 @@
       </select>
 
       <label for="windows">How many windows?</label>
-      <input type="number" id="windows" min="1" required>
+      <input type="number" id="windows" min="10" required>
 
-      <label for="lastCleaned">Last time windows were cleaned:</label>
-      <select id="lastCleaned" required>
-        <option value="Never">Never</option>
-        <option value="<6mo">Within the last 6 months</option>
-        <option value=">6mo">More than 6 months ago</option>
-      </select>
-
-      <label for="serviceType">Do you want inside, outside, or both?</label>
-      <select id="serviceType" required>
-        <option value="outside">Outside only</option>
-        <option value="both">Both inside and outside</option>
-      </select>
-
-      <label for="hardReach">Any hard-to-reach windows?</label>
-      <select id="hardReach" required>
+      <label for="screenClean">Add screen cleaning?</label>
+      <select id="screenClean" required>
         <option value="no">No</option>
-        <option value="yes">Yes</option>
+        <option value="yes">Yes (+$25)</option>
       </select>
+
+      <button type="submit">See My Estimated Quote</button>
+    </form>
+
+    <div id="quoteResult"></div>
+
+    <form id="leadForm">
+      <p style="text-align:center;">✅ Let’s get you booked! Fill out your info and we’ll reach out shortly to confirm your quote and schedule.</p>
 
       <label for="name">Your Name:</label>
       <input type="text" id="name" required>
@@ -128,10 +117,10 @@
       <label for="email">Email:</label>
       <input type="email" id="email" required>
 
-      <button type="submit">Calculate My Quote</button>
+      <button type="submit">Send My Info</button>
     </form>
 
-    <div id="result"></div>
+    <div id="thankYou"></div>
     <a class="back-home" href="index.html">← Back to Homepage</a>
   </div>
 
@@ -141,24 +130,38 @@
 
       const stories = document.getElementById("stories").value;
       const windows = parseInt(document.getElementById("windows").value);
-      const name = document.getElementById("name").value;
+      const screenAdd = document.getElementById("screenClean").value;
 
-      let estimate = "";
+      let price = 0;
 
-      if (windows > 20) {
-        estimate = `Thanks, ${name}! For homes with more than 20 windows, please contact us directly for an accurate quote.`;
-      } else {
-        if (stories === "1") {
-          estimate = `Thanks, ${name}! Your estimated cleaning is $179.`;
-        } else if (stories === "2") {
-          estimate = `Thanks, ${name}! Your estimated cleaning is $209.`;
-        } else {
-          estimate = `Thanks, ${name}! Please select a valid number of stories.`;
-        }
+      if (windows < 10 || windows > 35) {
+        document.getElementById("quoteResult").innerHTML = "Thanks! For homes with under 10 or more than 35 windows, please <a href='mailto:ohmscleaning@gmail.com'>contact us</a> directly for a quote.";
+        document.getElementById("leadForm").style.display = 'none';
+        return;
       }
 
-      document.getElementById("result").innerText = estimate;
+      if (stories === "1") {
+        if (windows <= 20) price = 179;
+        else if (windows <= 25) price = 199;
+        else price = 249;
+      } else if (stories === "2") {
+        if (windows <= 20) price = 209;
+        else if (windows <= 25) price = 249;
+        else price = 299;
+      }
+
+      if (screenAdd === "yes") price += 25;
+
+      document.getElementById("quoteResult").innerText = `Your estimated window cleaning is $${price}.`;
+      document.getElementById("leadForm").style.display = 'block';
+    });
+
+    document.getElementById("leadForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      document.getElementById("thankYou").innerText = "✅ Thank you! Your info has been received. We'll reach out shortly to confirm your quote.";
+      document.getElementById("leadForm").reset();
     });
   </script>
 </body>
 </html>
+
