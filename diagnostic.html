@@ -58,28 +58,11 @@
     button:hover {
       background-color: #e6ecf3;
     }
-    #quoteResult, #thankYou {
+    #quoteResult {
       margin-top: 2rem;
       font-size: 1.1rem;
       font-weight: bold;
       text-align: center;
-    }
-    #bookNow {
-      display: none;
-      margin-top: 1.5rem;
-      text-align: center;
-    }
-    #bookNow a {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #88A9C3;
-      color: #091235;
-      font-weight: 600;
-      border-radius: 6px;
-      text-decoration: none;
-    }
-    #bookNow a:hover {
-      background-color: #e6ecf3;
     }
     .back-home {
       display: block;
@@ -113,6 +96,19 @@
         <option value="yes">Yes (+$25)</option>
       </select>
 
+      <label for="interiorAdd">Add interior window cleaning?</label>
+      <select id="interiorAdd" required>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+
+      <label for="lastCleaned">When were your windows last cleaned?</label>
+      <select id="lastCleaned" required>
+        <option value="<6mo">Within the last 6 months</option>
+        <option value="6-8mo">6–8 months ago</option>
+        <option value=">8mo">More than 8 months ago</option>
+      </select>
+
       <label for="name">Your Name:</label>
       <input type="text" id="name" required>
 
@@ -129,11 +125,6 @@
     </form>
 
     <div id="quoteResult"></div>
-
-    <div id="bookNow">
-      <a href="https://calendly.com/ohmscleaningservice" target="_blank">Book Your Cleaning Now</a>
-    </div>
-
     <a class="back-home" href="index.html">← Back to Homepage</a>
   </div>
 
@@ -144,13 +135,14 @@
       const stories = document.getElementById("stories").value;
       const windows = parseInt(document.getElementById("windows").value);
       const screenAdd = document.getElementById("screenClean").value;
+      const interiorAdd = document.getElementById("interiorAdd").value;
+      const lastCleaned = document.getElementById("lastCleaned").value;
       const name = document.getElementById("name").value;
 
       let price = 0;
 
       if (windows < 10 || windows > 35) {
         document.getElementById("quoteResult").innerHTML = `Thanks, ${name}! For homes with under 10 or more than 35 windows, please <a href='mailto:ohmscleaning@gmail.com'>contact us</a> directly for a quote.`;
-        document.getElementById("bookNow").style.display = 'none';
         return;
       }
 
@@ -166,9 +158,20 @@
 
       if (screenAdd === "yes") price += 25;
 
-      document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Let's go ahead and get you scheduled.`;
-      document.getElementById("bookNow").style.display = 'block';
+      if (interiorAdd === "yes") {
+        if (windows >= 15 && windows <= 20) price += 129;
+        else if (windows >= 21 && windows <= 25) price += 149;
+        else if (windows >= 26 && windows <= 35) price += 179;
+      }
+
+      if (lastCleaned === ">8mo") price += 50;
+
+      document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Redirecting you to schedule...`;
+      setTimeout(() => {
+        window.location.href = "https://calendly.com/ohmscleaningservice";
+      }, 2500);
     });
   </script>
 </body>
 </html>
+
