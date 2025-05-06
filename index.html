@@ -9,7 +9,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&family=Marcellus&display=swap" rel="stylesheet"/>
   <style>
     * {margin: 0; padding: 0; box-sizing: border-box;}
-    body {font-family: 'Marcellus', serif; background-color: #f9fbfc; color: #14202E; line-height: 1.6; overflow-x: hidden;}
+    body {$1
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
     html {scroll-behavior: smooth;}
     body::before {
       content: "";
@@ -69,6 +72,11 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
     }
     section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
       max-width: 1000px;
       margin: 100px auto 60px;
       padding: 60px 40px;
@@ -170,20 +178,20 @@
 <section id="about">
   <h2>About Us</h2>
   <p style="text-align:center; max-width:800px; margin: 0 auto 20px;">
-    At Ohm's Cleaning Services, we blend integrity, professionalism, and faith-driven care to transform homes across Henderson, NV. Our licensed team is dedicated to honest work and detailed cleaning, inside and out.
+    Ohm's Cleaning Services isn’t just about clean windows — it's about trust, care, and transformation. Proudly serving Henderson, NV, we offer detail-obsessed window cleaning delivered with faith-based values, high integrity, and warm customer care.
+  </p>
+  <p style="text-align:center; max-width:800px; margin: 0 auto 20px;">
+    Whether you're a first-time customer or a long-term homeowner, our mission is to restore clarity to your view and excellence to your home’s curb appeal. Fully licensed, equipped with industry-leading tools, and backed by glowing reviews — we’re the trusted neighbor you call to make your windows shine.
   </p>
   <img src="wfp team work.jpg" alt="Team at Work" style="display:block; margin: 30px auto; max-width:500px; border-radius: 12px;"/>
 </section>
 
-<div class="bg-accent">
+<div class="bg-accent" style="scroll-snap-align: start; min-height: 100vh; display: flex; align-items: center;">
 <section id="services">
   <h2>Our Services</h2>
-  <div class="services-grid">
-    <div class="service-block">
-      <img src="Man Cleaning 1.jpg" alt="Exterior Window Cleaning"/>
-      <h3>Exterior Window Cleaning</h3>
-      <p>Crystal-clear exteriors that boost your home's curb appeal and let the light in.</p>
-    </div>
+  <div class="services-grid" style="overflow-x: auto; scroll-snap-type: x mandatory; display: flex; gap: 20px; padding-bottom: 10px;">
+$1
+</div>
     <div class="service-block">
       <img src="interior cleaning.jpg" alt="Interior Window Cleaning"/>
       <h3>Interior Window Cleaning</h3>
