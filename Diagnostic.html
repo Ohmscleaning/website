@@ -3,66 +3,137 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get a Quote | Ohm's Cleaning Services</title>
+  <title>Instant Quote | Ohm's Cleaning Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&family=Marcellus&display=swap" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
-    h1 { text-align: center; }
-    form { display: flex; flex-direction: column; gap: 1rem; }
-    label { font-weight: bold; }
-    input, select, textarea { padding: 0.5rem; }
-    button { padding: 0.75rem; background-color: black; color: white; border: none; cursor: pointer; }
-    #result { margin-top: 2rem; font-size: 1.2rem; font-weight: bold; color: green; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Marcellus', serif;
+      background-color: #f9fbfc;
+      color: #14202E;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 40px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 20px;
+      max-width: 180px;
+    }
+    h1 {
+      text-align: center;
+      color: #091235;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    label {
+      font-weight: bold;
+    }
+    input, select, textarea {
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      padding: 0.75rem;
+      background-color: #88A9C3;
+      color: #091235;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #e6ecf3;
+    }
+    #result {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #091235;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
-  <h1>Get Your Window Cleaning Quote</h1>
+  <div class="container">
+    <img src="White Main Logo.png" alt="Ohm's Logo" class="logo">
+    <h1>Get Your Instant Window Cleaning Quote</h1>
 
-  <form id="quoteForm">
-    <label for="stories">How many stories is your home?</label>
-    <select id="stories" required>
-      <option value="">-- Select --</option>
-      <option value="1">1 Story</option>
-      <option value="2">2 Stories</option>
-    </select>
+    <form id="quoteForm">
+      <label for="stories">How many stories is your home?</label>
+      <select id="stories" required>
+        <option value="">-- Select --</option>
+        <option value="1">1 Story</option>
+        <option value="2">2 Stories</option>
+      </select>
 
-    <label for="windows">How many windows?</label>
-    <input type="number" id="windows" min="1" required>
+      <label for="windows">How many windows?</label>
+      <input type="number" id="windows" min="1" required>
 
-    <label for="lastCleaned">Last time windows were cleaned:</label>
-    <select id="lastCleaned" required>
-      <option value="Never">Never</option>
-      <option value="<6mo">Within the last 6 months</option>
-      <option value=">6mo">More than 6 months ago</option>
-    </select>
+      <label for="lastCleaned">Last time windows were cleaned:</label>
+      <select id="lastCleaned" required>
+        <option value="Never">Never</option>
+        <option value="<6mo">Within the last 6 months</option>
+        <option value=">6mo">More than 6 months ago</option>
+      </select>
 
-    <label for="serviceType">Do you want inside, outside, or both?</label>
-    <select id="serviceType" required>
-      <option value="outside">Outside only</option>
-      <option value="both">Both inside and outside</option>
-    </select>
+      <label for="serviceType">Do you want inside, outside, or both?</label>
+      <select id="serviceType" required>
+        <option value="outside">Outside only</option>
+        <option value="both">Both inside and outside</option>
+      </select>
 
-    <label for="hardReach">Any hard-to-reach windows?</label>
-    <select id="hardReach" required>
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-    </select>
+      <label for="hardReach">Any hard-to-reach windows?</label>
+      <select id="hardReach" required>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
 
-    <label for="name">Your Name:</label>
-    <input type="text" id="name" required>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required>
 
-    <label for="address">Your Address:</label>
-    <input type="text" id="address" required>
+      <label for="address">Your Address:</label>
+      <input type="text" id="address" required>
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" required>
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
 
-    <button type="submit">Get Quote</button>
-  </form>
+      <button type="submit">Calculate My Quote</button>
+    </form>
 
-  <div id="result"></div>
+    <div id="result"></div>
+    <a class="back-home" href="index.html">← Back to Homepage</a>
+  </div>
 
   <script>
     document.getElementById("quoteForm").addEventListener("submit", function(e) {
