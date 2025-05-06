@@ -138,6 +138,9 @@
       const interiorAdd = document.getElementById("interiorAdd").value;
       const lastCleaned = document.getElementById("lastCleaned").value;
       const name = document.getElementById("name").value;
+      const address = document.getElementById("address").value;
+      const phone = document.getElementById("phone").value;
+      const email = document.getElementById("email").value;
 
       let price = 0;
 
@@ -165,6 +168,23 @@
       }
 
       if (lastCleaned === ">8mo") price += 50;
+
+      const quoteMessage = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nStories: ${stories}\nWindows: ${windows}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nLast Cleaned: ${lastCleaned}\nEstimated Quote: $${price}`;
+
+      fetch("https://formspree.io/f/xgvkknzp", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          address,
+          message: quoteMessage
+        })
+      });
 
       document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Redirecting you to schedule...`;
       setTimeout(() => {
