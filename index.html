@@ -133,7 +133,21 @@
       max-width: 700px;
       margin: 30px auto 0;
     }
-  </style>
+    section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .bg-accent {
+    background: linear-gradient(to bottom right, #eef3f8, #f9fbfc);
+    padding: 60px 0;
+  }
+</style>
 </head>
 <body>
 
@@ -147,7 +161,7 @@
 <header>
   <img src="White Main Logo.png" alt="Ohm's Logo"/>
   <h1>Ohm's Cleaning Services</h1>
-  <p class="subtitle">Henderson’s Faith-Driven Window & Exterior Cleaning Pros</p>
+  <p class="subtitle">Henderson’s Faith-Driven Window Cleaning Pros</p>
   <div class="hero-cta">
     <a href="diagnostic.html">💥 Get My Instant Quote Now →</a>
   </div>
@@ -161,6 +175,7 @@
   <img src="wfp team work.jpg" alt="Team at Work" style="display:block; margin: 30px auto; max-width:500px; border-radius: 12px;"/>
 </section>
 
+<div class="bg-accent">
 <section id="services">
   <h2>Our Services</h2>
   <div class="services-grid">
@@ -180,8 +195,8 @@
       <p>Water-fed pole systems and pro-grade tools for safe, streak-free cleaning.</p>
     </div>
   </div>
-</section>
-
+</section></div>
+<div class="bg-accent">
 <section id="gallery">
   <h2>Gallery of Our Work</h2>
   <div class="services-grid">
@@ -190,14 +205,14 @@
     <div class="service-block"><img src="Window cleaning b&a.PNG" alt="Before and After 3"/><h3>Deep Window Cleaning – Henderson</h3></div>
     <div class="service-block"><img src="Window cleaning b & a.PNG" alt="Before and After 4"/><h3>Hard Water Window Restoration</h3></div>
   </div>
-</section>
-
+</section></div>
+<div class="bg-accent">
 <section id="contact">
   <h2>Contact Us</h2>
   <p><strong>Phone:</strong> 702-201-3944</p>
   <p><strong>Email:</strong> ohmscleaning@gmail.com</p>
-</section>
-
+</section></div>
+<div class="bg-accent">
 <section class="cta" id="quote">
   <h2>Get an Instant Quote</h2>
   <p>Use our fast & free quote tool to get a personalized estimate in under 1 minute.</p>
@@ -210,11 +225,24 @@
   <div class="testimonial">
     “Ohm’s did an incredible job on our windows. I didn’t realize how much natural light we were missing! Professional, punctual, and polite. Highly recommended.” — Sarah R., Henderson
   </div>
-</section>
-
+</section></div>
 <footer>
   &copy; 2025 Ohm's Cleaning Services. Professional, Faith-Driven, Trusted by Locals.
 </footer>
 
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+  });
+</script>
 </body>
 </html>
