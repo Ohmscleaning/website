@@ -1,0 +1,92 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote | Ohm's Cleaning Services</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 600px; margin: auto; }
+    h1 { text-align: center; }
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    label { font-weight: bold; }
+    input, select, textarea { padding: 0.5rem; }
+    button { padding: 0.75rem; background-color: black; color: white; border: none; cursor: pointer; }
+    #result { margin-top: 2rem; font-size: 1.2rem; font-weight: bold; color: green; }
+  </style>
+</head>
+<body>
+  <h1>Get Your Window Cleaning Quote</h1>
+
+  <form id="quoteForm">
+    <label for="stories">How many stories is your home?</label>
+    <select id="stories" required>
+      <option value="">-- Select --</option>
+      <option value="1">1 Story</option>
+      <option value="2">2 Stories</option>
+    </select>
+
+    <label for="windows">How many windows?</label>
+    <input type="number" id="windows" min="1" required>
+
+    <label for="lastCleaned">Last time windows were cleaned:</label>
+    <select id="lastCleaned" required>
+      <option value="Never">Never</option>
+      <option value="<6mo">Within the last 6 months</option>
+      <option value=">6mo">More than 6 months ago</option>
+    </select>
+
+    <label for="serviceType">Do you want inside, outside, or both?</label>
+    <select id="serviceType" required>
+      <option value="outside">Outside only</option>
+      <option value="both">Both inside and outside</option>
+    </select>
+
+    <label for="hardReach">Any hard-to-reach windows?</label>
+    <select id="hardReach" required>
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="address">Your Address:</label>
+    <input type="text" id="address" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+
+    <button type="submit">Get Quote</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("quoteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const stories = document.getElementById("stories").value;
+      const windows = parseInt(document.getElementById("windows").value);
+      const name = document.getElementById("name").value;
+
+      let estimate = "";
+
+      if (windows > 20) {
+        estimate = `Thanks, ${name}! For homes with more than 20 windows, please contact us directly for an accurate quote.`;
+      } else {
+        if (stories === "1") {
+          estimate = `Thanks, ${name}! Your estimated cleaning is $179.`;
+        } else if (stories === "2") {
+          estimate = `Thanks, ${name}! Your estimated cleaning is $209.`;
+        } else {
+          estimate = `Thanks, ${name}! Please select a valid number of stories.`;
+        }
+      }
+
+      document.getElementById("result").innerText = estimate;
+    });
+  </script>
+</body>
+</html>
