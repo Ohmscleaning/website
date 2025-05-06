@@ -8,11 +8,7 @@
   <meta name="description" content="Professional window and exterior cleaning in Henderson, NV. Faith-based, licensed, and trusted.">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&family=Marcellus&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Marcellus', serif;
       background-color: #f9fbfc;
@@ -20,10 +16,11 @@
       line-height: 1.6;
     }
     header {
-      background-color: #091235;
+      background: url('cleaning-hero.jpg') center/cover no-repeat;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 100px 20px 60px;
+      position: relative;
     }
     nav {
       position: absolute;
@@ -31,53 +28,67 @@
       right: 20px;
     }
     nav a {
-      color: #88A9C3;
+      color: #f9fbfc;
       margin-left: 20px;
       text-decoration: none;
       font-weight: 600;
     }
     nav a:hover {
-      color: white;
+      text-decoration: underline;
     }
     header img {
       max-width: 180px;
       margin-bottom: 20px;
     }
     h1 {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 800;
       margin-bottom: 10px;
     }
     p.subtitle {
-      font-size: 1.2rem;
-      color: #88A9C3;
+      font-size: 1.4rem;
+      color: #f0f0f0;
+    }
+    .hero-cta {
+      margin-top: 30px;
+    }
+    .hero-cta a {
+      background: #ffffff;
+      color: #091235;
+      padding: 12px 24px;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.1rem;
     }
     section {
       max-width: 1000px;
       margin: auto;
-      padding: 60px 40px 40px;
+      padding: 60px 40px;
       background-color: white;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       margin-bottom: 60px;
-    }
-    .services, .contact, .gallery, .about, .cta {
-      background-color: #ffffff;
-      color: #14202E;
-      text-align: center;
-      padding: 40px 20px;
-      border-radius: 8px;
-      margin-top: 80px;
     }
     h2 {
       font-size: 2rem;
       margin-bottom: 20px;
       border-bottom: 2px solid #14202E;
       padding-bottom: 10px;
+      text-align: center;
     }
     ul {
-      list-style-type: disc;
-      padding-left: 20px;
+      list-style-type: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      text-align: left;
+    }
+    ul li::before {
+      content: '✔';
+      color: #88A9C3;
+      margin-right: 10px;
     }
     .gallery {
       display: grid;
@@ -96,57 +107,34 @@
     .contact p {
       font-size: 1.1rem;
       margin-bottom: 10px;
+      text-align: center;
     }
     .cta {
       background-color: #2B4257;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
       border-radius: 8px;
-      margin-top: 80px;
     }
     .cta h2 {
-      border: none;
       font-size: 2rem;
+      margin-bottom: 10px;
     }
     .cta p {
-      margin: 10px 0;
       font-size: 1.2rem;
+      margin-bottom: 20px;
     }
-    .quote-form {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 400px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .quote-form input,
-    .quote-form textarea,
-    .quote-form button {
-      padding: 12px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 6px;
-    }
-    .quote-form input,
-    .quote-form textarea {
-      background-color: #fff;
-      color: #14202E;
-    }
-    .quote-form textarea {
-      resize: vertical;
-    }
-    .quote-form button {
-      background-color: #88A9C3;
+    .cta a {
+      background: #88A9C3;
       color: #091235;
-      font-weight: 600;
-      cursor: pointer;
+      font-weight: 700;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 6px;
+      display: inline-block;
     }
-    .quote-form button:hover {
-      background-color: white;
-      color: #2B4257;
+    .cta a:hover {
+      background: #ffffff;
     }
     footer {
       background-color: #2B4257;
@@ -173,15 +161,15 @@
   <header>
     <img src="White Main Logo.png" alt="Ohm's Logo">
     <h1>Ohm's Cleaning Services</h1>
-    <p class="subtitle">Window Cleaning • Pressure Washing • Gutter Cleaning • Solar Panel Cleaning • More</p>
+    <p class="subtitle">Henderson’s Faith-Driven Window & Exterior Cleaning Pros</p>
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div style="margin-top: 20px;">
-      <a href="#quote" class="cta-button" style="background: #88A9C3; color: #091235; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none;">Get a Free Quote</a>
+    <div class="hero-cta">
+      <a href="diagnostic.html">Get My Instant Quote →</a>
     </div>
   </header>
 
@@ -193,12 +181,12 @@
   <section class="services" id="services">
     <h2>Our Services</h2>
     <ul>
-      <li>🪟 Residential Window Cleaning (Exterior & Interior)</li>
-      <li>🧼 Screen & Track Cleaning</li>
-      <li>💦 Pressure Washing (Driveways, Walls, Patios)</li>
-      <li>🪣 Gutter Cleaning</li>
-      <li>🔆 Solar Panel Cleaning</li>
-      <li>♻️ Recurring Exterior Maintenance Packages</li>
+      <li>Residential Window Cleaning (Exterior & Interior)</li>
+      <li>Screen & Track Cleaning</li>
+      <li>Pressure Washing (Driveways, Walls, Patios)</li>
+      <li>Gutter Cleaning</li>
+      <li>Solar Panel Cleaning</li>
+      <li>Recurring Exterior Maintenance Packages</li>
     </ul>
   </section>
 
@@ -216,21 +204,15 @@
     <p><strong>Email:</strong> ohmscleaning@gmail.com</p>
   </section>
 
-  <section class="cta" id="quote" style="background-color: #ffffff; color: #14202E;">
-  <h2>Get an Instant Quote</h2>
-  <p>Use our smart quote tool to get a ballpark estimate in under 1 minute.</p>
-  <div style="margin-top: 20px;">
-    <a href="diagnostic.html"
-       style="display: inline-block; padding: 12px 24px; background-color: #88A9C3; color: #091235; font-weight: 600; border-radius: 6px; text-decoration: none;">
-       Start My Quote Now
-    </a>
-  </div>
-  <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px;">
-    <span style="background: #e6ecf3; padding: 10px 15px; border-radius: 6px; font-weight: 600;">Faith-Based Integrity</span>
-    <span style="background: #e6ecf3; padding: 10px 15px; border-radius: 6px; font-weight: 600;">Licensed & Insured</span>
-  </div>
-</section>
-
+  <section class="cta" id="quote">
+    <h2>Get an Instant Quote</h2>
+    <p>Use our fast & free quote tool to get a personalized estimate in under 1 minute.</p>
+    <a href="diagnostic.html">Start My Quote Now</a>
+    <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <span style="background: #e6ecf3; padding: 10px 15px; border-radius: 6px; font-weight: 600;">Faith-Based Integrity</span>
+      <span style="background: #e6ecf3; padding: 10px 15px; border-radius: 6px; font-weight: 600;">Licensed & Insured</span>
+    </div>
+  </section>
 
   <footer>
     &copy; 2025 Ohm's Cleaning Services. Professional, Faith-Driven, Trusted by Locals.
