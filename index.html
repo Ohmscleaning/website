@@ -9,8 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600;800&family=Marcellus&display=swap" rel="stylesheet"/>
   <style>
     html, body {
-      scroll-snap-type: y mandatory;
-      overflow-y: scroll; height: 100%; }
+       }
     * {margin: 0; padding: 0; box-sizing: border-box;}
     body {font-family: 'Marcellus', serif; background-color: #f9fbfc; color: #14202E; line-height: 1.6;}
     html {scroll-behavior: smooth;}
@@ -65,11 +64,7 @@
       100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
     }
     section {
-      scroll-snap-align: start;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      
       max-width: 1000px;
       margin: 100px auto 60px;
       padding: 60px 40px;
@@ -152,11 +147,12 @@
 <header>
   <img src="White Main Logo.png" alt="Ohm's Logo"/>
   <h1>Ohm's Cleaning Services</h1>
-  <p class="subtitle">Henderson’s Faith-Driven Window & Exterior Cleaning Pros</p>
-  <div class="hero-cta">
-      <div style="font-size: 2rem; color: #FFD700; animation: bounce 1.1s infinite;">⬇️⬇️⬇️</div>
-      <div style="font-size: 2.5rem; color: #FFD700; animation: bounce 1.3s infinite;">⬇️ 💥 ⬇️</div>
-      <div style="font-size: 2rem; color: #FFD700; animation: bounce 1.5s infinite;">⬇️⬇️⬇️</div>
+  <p class="subtitle">Nevada's Faith-Driven Window Cleaning Pros</p>
+  <div class="hero-cta" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+      <div style="display: flex; justify-content: center; gap: 10px;">
+        <div style="font-size: 2.5rem; color: #FFD700; animation: bounce 1.3s infinite;">⬇️</div>
+        <div style="font-size: 2.5rem; color: #FFD700; animation: bounce 1.4s infinite;">⬇️</div>
+      </div>
       <a href="diagnostic.html">💥 Get My Instant Quote Now →</a>
   </div>
 </header>
@@ -164,23 +160,36 @@
 <section id="about">
   <h2>About Us</h2>
   <p style="text-align:center; max-width:800px; margin: 0 auto 20px;">
-    At Ohm's Cleaning Services, we blend integrity, professionalism, and faith-driven care to transform homes across Henderson, NV. Our licensed team is dedicated to honest work and detailed cleaning, inside and out.
+    At Ohm's Cleaning Services, we're on a mission to bring clarity and care back to homes across Nevada. Founded on principles of integrity, honesty, and faith-driven service, we believe in doing more than just cleaning windows — we deliver peace of mind, better light, and renewed pride in your home's appearance.
+  </p>
+  <p style="text-align:center; max-width:800px; margin: 0 auto 20px;">
+    Our team of trained and insured professionals brings state-of-the-art tools and years of experience to every job. Whether it's routine maintenance or deep restoration, you can count on us for quality work done with a servant's heart. Let us brighten your day — one window at a time.
   </p>
   <img src="wfp team work.jpg" alt="Team at Work" style="display:block; margin: 30px auto; max-width:500px; border-radius: 12px;"/>
 </section>
 
 <section id="services">
   <h2>Our Services</h2>
-  <div class="services-grid">
-    <div class="service-block">
-      <img src="Man Cleaning 1.jpg" alt="Exterior Window Cleaning"/>
-      <h3>Exterior Window Cleaning</h3>
-      <p>Crystal-clear exteriors that boost your home's curb appeal and let the light in.</p>
-    </div>
-    <div class="service-block">
-      <img src="interior cleaning.jpg" alt="Interior Window Cleaning"/>
-      <h3>Interior Window Cleaning</h3>
-      <p>Safe and spotless indoor glass cleaning that brightens your living space.</p>
+  <div class="services-grid" style="gap: 15px;">
+  <div class="service-block">
+    <img src="Man Cleaning 1.jpg" alt="Exterior Window Cleaning"/>
+    <h3>Exterior Window Cleaning</h3>
+    <p>Crystal-clear exteriors that boost your home's curb appeal and let the light in.</p>
+    <a href="#quote" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
+  </div>
+  <div class="service-block">
+    <img src="interior cleaning.jpg" alt="Interior Window Cleaning"/>
+    <h3>Interior Window Cleaning</h3>
+    <p>Safe and spotless indoor glass cleaning that brightens your living space.</p>
+    <a href="#quote" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
+  </div>
+  <div class="service-block">
+    <img src="man with wfp.jpg" alt="Advanced Cleaning Equipment"/>
+    <h3>Advanced Equipment</h3>
+    <p>Water-fed pole systems and pro-grade tools for safe, streak-free cleaning.</p>
+    <a href="#quote" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
+  </div>
+</div>
     </div>
     <div class="service-block">
       <img src="man with wfp.jpg" alt="Advanced Cleaning Equipment"/>
@@ -192,11 +201,23 @@
 
 <section id="gallery">
   <h2>Gallery of Our Work</h2>
-  <div class="services-grid">
-    <div class="service-block"><img src="Before after 4.jpg" alt="Before and After 1"/><h3>Window Cleaning – Sun City</h3></div>
-    <div class="service-block"><img src="Before and after 3.jpg" alt="Before and After 2"/><h3>Exterior Window Wash – Anthem</h3></div>
-    <div class="service-block"><img src="Window cleaning b&a.PNG" alt="Before and After 3"/><h3>Deep Window Cleaning – Henderson</h3></div>
-    <div class="service-block"><img src="Window cleaning b & a.PNG" alt="Before and After 4"/><h3>Hard Water Window Restoration</h3></div>
+  <div class="gallery-carousel" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding-bottom: 10px;">
+    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
+      <img src="Before after 4.jpg" alt="Before and After 1" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+      <h3>Window Cleaning – Sun City</h3>
+    </div>
+    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
+      <img src="Before and after 3.jpg" alt="Before and After 2" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+      <h3>Exterior Window Wash – Anthem</h3>
+    </div>
+    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
+      <img src="Window cleaning b&a.PNG" alt="Before and After 3" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+      <h3>Deep Window Cleaning – Henderson</h3>
+    </div>
+    <div style="flex: 0 0 80%; scroll-snap-align: center; text-align: center;">
+      <img src="Window cleaning b & a.PNG" alt="Before and After 4" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+      <h3>Hard Water Window Restoration</h3>
+    </div>
   </div>
 </section>
 
