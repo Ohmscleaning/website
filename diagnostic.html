@@ -184,14 +184,22 @@
           address,
           message: quoteMessage
         })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Formspree response:", data);
+        document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Redirecting you to schedule...`;
+        setTimeout(() => {
+          window.location.href = "https://calendly.com/ohmscleaningservice";
+        }, 5000);
+      })
+      .catch(error => {
+        console.error("Formspree error:", error);
+        alert("There was an error sending your information. Please contact us directly.");
       });
-
-      document.getElementById("quoteResult").innerText = `Thanks, ${name}! Your estimated window cleaning is $${price}. Redirecting you to schedule...`;
-      setTimeout(() => {
-        window.location.href = "https://calendly.com/ohmscleaningservice";
-      }, 5000);
     });
   </script>
 </body>
 </html>
+
 
