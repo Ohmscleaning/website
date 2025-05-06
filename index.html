@@ -1,3 +1,4 @@
+<!-- HTML START -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +17,12 @@
       line-height: 1.6;
     }
     header {
-  background: linear-gradient(rgba(9, 18, 53, 0.85), rgba(9, 18, 53, 0.85)), url('cleaning-hero.jpg') center/cover no-repeat;
-  color: white;
-  text-align: center;
-  padding: 100px 20px 60px;
-  position: relative;
-}
+      background: linear-gradient(rgba(9, 18, 53, 0.85), rgba(9, 18, 53, 0.85)), url('Squeegee on glass.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 60px;
+      position: relative;
+    }
     nav {
       position: absolute;
       top: 20px;
@@ -33,9 +34,7 @@
       text-decoration: none;
       font-weight: 600;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
     header img {
       max-width: 180px;
       margin-bottom: 20px;
@@ -49,9 +48,7 @@
       font-size: 1.4rem;
       color: #f0f0f0;
     }
-    .hero-cta {
-      margin-top: 30px;
-    }
+    .hero-cta { margin-top: 30px; }
     .hero-cta a {
       background: #ffffff;
       color: #091235;
@@ -77,32 +74,27 @@
       padding-bottom: 10px;
       text-align: center;
     }
-    ul {
-      list-style-type: none;
-      padding: 0;
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 10px;
-      text-align: left;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+      text-align: center;
     }
-    ul li::before {
-      content: '✔';
-      color: #88A9C3;
-      margin-right: 10px;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .gallery img {
+    .service-block img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
-    .gallery img:hover {
-      transform: scale(1.03);
-      transition: transform 0.3s ease;
+    .service-block h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: #2B4257;
+    }
+    .service-block p {
+      font-size: 1rem;
+      color: #555;
     }
     .contact p {
       font-size: 1.1rem;
@@ -133,9 +125,7 @@
       border-radius: 6px;
       display: inline-block;
     }
-    .cta a:hover {
-      background: #ffffff;
-    }
+    .cta a:hover { background: #ffffff; }
     footer {
       background-color: #2B4257;
       color: white;
@@ -152,9 +142,7 @@
       height: 100%;
       z-index: -1;
     }
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
@@ -165,7 +153,6 @@
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
-      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="hero-cta">
@@ -180,22 +167,23 @@
 
   <section class="services" id="services">
     <h2>Our Services</h2>
-    <ul>
-      <li>Residential Window Cleaning (Exterior & Interior)</li>
-      <li>Screen & Track Cleaning</li>
-      <li>Pressure Washing (Driveways, Walls, Patios)</li>
-      <li>Gutter Cleaning</li>
-      <li>Solar Panel Cleaning</li>
-      <li>Recurring Exterior Maintenance Packages</li>
-    </ul>
-  </section>
-
-  <section class="gallery" id="gallery">
-    <h2>Before & After Gallery</h2>
-    <figure><img src="Before after 4.jpg" alt="Before and After 1"><figcaption>Window Cleaning – Sun City</figcaption></figure>
-    <figure><img src="Before and after 3.jpg" alt="Before and After 2"><figcaption>Exterior Window Wash – Anthem</figcaption></figure>
-    <figure><img src="Window cleaning b&a.PNG" alt="Before and After 3"><figcaption>Deep Window Cleaning – Henderson</figcaption></figure>
-    <figure><img src="Window cleaning b & a.PNG" alt="Before and After 4"><figcaption>Hard Water Window Restoration</figcaption></figure>
+    <div class="services-grid">
+      <div class="service-block">
+        <img src="Man Cleaning 1.jpg" alt="Exterior Window Cleaning">
+        <h3>Exterior Window Cleaning</h3>
+        <p>Crystal-clear exteriors that boost your home's curb appeal and let the light in.</p>
+      </div>
+      <div class="service-block">
+        <img src="Man Clenaing 2.jpg" alt="Interior Window Cleaning">
+        <h3>Interior Window Cleaning</h3>
+        <p>Safe and spotless indoor glass cleaning that brightens your living space.</p>
+      </div>
+      <div class="service-block">
+        <img src="man with wfp.jpg" alt="Advanced Cleaning Equipment">
+        <h3>Advanced Equipment</h3>
+        <p>Water-fed pole systems and pro-grade tools for safe, streak-free cleaning.</p>
+      </div>
+    </div>
   </section>
 
   <section class="contact" id="contact">
@@ -219,6 +207,8 @@
   </footer>
 </body>
 </html>
+<!-- HTML END -->
+
 
 </body>
 </html>
