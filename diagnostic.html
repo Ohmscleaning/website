@@ -131,13 +131,13 @@
       const phone = document.getElementById("phone").value;
       const promo = document.getElementById("promo").value.trim().toUpperCase();
 
-      let price = panes * 5.35;
+      let price = panes * 4.75;
 
       if (interiorAdd === "yes") {
-        price += panes * 2.5;
+        price += panes * 2.0;
       }
 
-      price += 20;
+      price += 17;
 
       if (stories === "2") {
         price += 60;
@@ -145,6 +145,7 @@
 
       let discount = 0;
       price = Math.ceil(price / 5) * 5;
+      if (price < 149) price = 149;
       let originalPrice = price;
       if (promo === "FB25") {
         discount = 25;
@@ -191,3 +192,4 @@
   </script>
 </body>
 </html>
+
