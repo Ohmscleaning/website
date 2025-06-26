@@ -116,6 +116,9 @@
       <label for="phone">Phone Number:</label>
       <input type="tel" id="phone" required>
 
+      <label for="promo">Promo Code (optional):</label>
+      <input type="text" id="promo" >
+
       <button type="submit">See My Estimated Quote</button>
     </form>
 
@@ -133,6 +136,7 @@
       const interiorAdd = document.getElementById("interiorAdd").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
+      const promo = document.getElementById("promo").value.trim().toUpperCase();
 
       let price = panes * 5.35;
 
@@ -148,7 +152,14 @@
         price += 60;
       }
 
-      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nEstimated Quote: $${price.toFixed(2)}`;
+      let discount = 0;
+      let originalPrice = price;
+      if (promo === "FB25") {
+        discount = 25;
+        price = Math.max(0, price - discount);
+      }
+
+      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nPromo Code: ${promo || 'None'}\nEstimated Quote: $${price.toFixed(2)}`;
 
       fetch("https://formspree.io/f/xgvkknzp", {
         method: "POST",
@@ -165,7 +176,17 @@
       .then(response => response.json())
       .then(data => {
         console.log("Formspree response:", data);
-        document.getElementById("quoteResult").innerHTML = `<strong>Thanks, ${name}!</strong><br>Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price.toFixed(2)}</span>.<br><em>Redirecting you to schedule now...</em>`;
+        let resultText = `<strong>Thanks, ${name}!</strong><br>`;
+        if (discount > 0) {
+          resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
+          resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
+          resultText += `<span style='color:#c14c4c;'>Promo "FB25" applied – you saved $${discount.toFixed(2)}!</span>`;
+        } else {
+          resultText += `Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price.toFixed(2)}</span>.`;
+        }
+        resultText += `<br><em>Redirecting you to schedule now...</em>`;
+        document.getElementById("quoteResult").innerHTML = resultText;
+
         setTimeout(() => {
           window.location.href = "https://calendly.com/ohmscleaningservice";
         }, 5000);
@@ -178,3 +199,4 @@
   </script>
 </body>
 </html>
+
