@@ -137,7 +137,8 @@
 const stories = document.getElementById("stories").value;
 const promo = document.getElementById("promo").value.trim().toUpperCase();
       if (panes < 20 || panes > 100) {
-        document.getElementById("quoteResult").innerHTML = `Thanks, ${name}! For homes with fewer than 20 or more than 100 panes, please <a href='mailto:ohmscleaning@gmail.com'>contact us</a> for a custom quote.`;
+        const promoText = promo === "SAVE25" ? "<br><span style='color:#2a7'>Promo Applied: -$25</span>" : "";
+document.getElementById("quoteResult").innerHTML = `<strong>Thanks, ${name}!</strong><br>Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price}</span>${promoText}<br><em>Redirecting you to schedule now...</em>`;
         return;
       }
 
