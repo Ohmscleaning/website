@@ -85,7 +85,13 @@
     <h1>Get Your Instant Window Cleaning Quote</h1>
 
     <form id="quoteForm">
-      <label for="panes">How many window panes do you have?</label>
+      <label for="stories">How many stories is your home?</label>
+<select id="stories" required>
+  <option value="1">1 Story</option>
+  <option value="2">2 Stories</option>
+</select>
+
+<label for="panes">How many window panes do you have?</label>
 <small style="color:#555; font-size:0.9rem; display:block; margin-bottom:0.5rem;">
   🔍 A pane = one piece of framed glass. Most double-hung windows have 2 panes. Sliders have 2–3.
 </small>
@@ -128,6 +134,7 @@
       const screenAdd = document.getElementById("screenAdd").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
+const stories = document.getElementById("stories").value;
 const promo = document.getElementById("promo").value.trim().toUpperCase();
       if (panes < 20 || panes > 100) {
         document.getElementById("quoteResult").innerHTML = `Thanks, ${name}! For homes with fewer than 20 or more than 100 panes, please <a href='mailto:ohmscleaning@gmail.com'>contact us</a> for a custom quote.`;
@@ -139,14 +146,22 @@ const promo = document.getElementById("promo").value.trim().toUpperCase();
       if (interiorAdd === "yes") price += panes * 3;
       if (screenAdd === "yes") price += 25;
 
-      if (promo === "SAVE25") price -= 25;
+      if (stories === "2") price += 40;
+
+if (promo === "SAVE25") price -= 25;
 
 // Round to nearest $5
       price = Math.round(price / 5) * 5;
 
       if (price < 149) price = 149;
 
-      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nPanes: ${panes}\nInterior: ${interiorAdd}\nScreens: ${screenAdd}\nEstimated Quote: $${price}${promo === "SAVE25" ? '
+      const quoteMessage = `Name: ${name}
+Phone: ${phone}
+Stories: ${stories}
+Panes: ${panes}
+Interior: ${interiorAdd}
+Screens: ${screenAdd}
+Estimated Quote: $${price}${promo === "SAVE25" ? '
 Promo Applied: -$25' : ''}`;
 
       fetch("https://formspree.io/f/xgvkknzp", {
@@ -165,8 +180,8 @@ Promo Applied: -$25' : ''}`;
       .then(data => {
         document.getElementById("quoteResult").innerHTML = `<strong>Thanks, ${name}!</strong><br>Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price}</span>.<br><em>Redirecting you to schedule now...</em>`;
         setTimeout(() => {
-          window.location.href = "https://calendly.com/ohmscleaningservice";
-        }, 5000);
+  window.location.href = "https://calendly.com/ohmscleaningservice";
+}, 6000);
       })
       .catch(error => {
         console.error("Formspree error:", error);
