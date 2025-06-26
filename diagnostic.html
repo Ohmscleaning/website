@@ -98,13 +98,7 @@
       <label for="windows">How many window panes? <br><small style='font-weight:normal;color:#555;'>(Each framed section of glass counts as one pane – a double-hung window usually has 2 panes.)</small></label>
       <input type="number" id="windows" min="1" required>
 
-      <label for="screenClean">Would you like screen cleaning?</label>
-      <select id="screenClean" required>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-
-      <label for="interiorAdd">Would you like interior window cleaning?</label>
+            <label for="interiorAdd">Would you like interior window cleaning?</label>
       <select id="interiorAdd" required>
         <option value="no">No</option>
         <option value="yes">Yes</option>
@@ -132,8 +126,7 @@
 
       const stories = document.getElementById("stories").value;
       const panes = parseInt(document.getElementById("windows").value);
-      const screenAdd = document.getElementById("screenClean").value;
-      const interiorAdd = document.getElementById("interiorAdd").value;
+            const interiorAdd = document.getElementById("interiorAdd").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const promo = document.getElementById("promo").value.trim().toUpperCase();
@@ -144,9 +137,7 @@
         price += panes * 2.5;
       }
 
-      if (screenAdd === "yes") {
-        price += 25;
-      }
+      price += 20;
 
       if (stories === "2") {
         price += 60;
@@ -160,7 +151,7 @@
         price = Math.max(0, price - discount);
       }
 
-      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nScreen Cleaning: ${screenAdd}\nInterior Add-on: ${interiorAdd}\nPromo Code: ${promo || 'None'}\nEstimated Quote: $${price.toFixed(2)}`;
+      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior Add-on: ${interiorAdd}\nPromo Code: ${promo || 'None'}\nEstimated Quote: $${price.toFixed(2)}`;
 
       fetch("https://formspree.io/f/xgvkknzp", {
         method: "POST",
@@ -200,4 +191,3 @@
   </script>
 </body>
 </html>
-
