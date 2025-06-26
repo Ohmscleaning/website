@@ -95,8 +95,11 @@
         <option value="2">2 Stories</option>
       </select>
 
-      <label for="windows">How many window panes?</label>
-      <input type="number" id="windows" min="1" required>
+      <label for="windows">How many window panes? <br><small style='font-weight:normal;color:#555;'>(Each framed section of glass counts as one pane – a double-hung window usually has 2 panes.)</small></label>
+      
+      <div style="margin-top: -0.5rem;">
+        <img src="website.png" alt="Example of window panes" style="margin-top: 10px; width: 100%; border-radius: 8px; border: 1px solid #ccc;">
+      </div>
 
       <label for="screenClean">Would you like screen cleaning?</label>
       <select id="screenClean" required>
@@ -153,6 +156,7 @@
       }
 
       let discount = 0;
+      price = Math.ceil(price / 5) * 5;
       let originalPrice = price;
       if (promo === "FB25") {
         discount = 25;
@@ -199,4 +203,3 @@
   </script>
 </body>
 </html>
-
