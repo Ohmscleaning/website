@@ -1,223 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instant Quote | Ohm's Cleaning Services</title>
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1188332553042659');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1188332553042659&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Marcellus', serif;
-      background-color: #f0f4f8;
-      color: #14202E;
-      line-height: 1.6;
-      padding: 2rem;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background-color: #ffffff;
-      border-radius: 16px;
-      padding: 50px 35px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
-    }
-    .logo {
-      display: block;
-      margin: 0 auto 25px;
-      max-width: 160px;
-    }
-    h1 {
-      text-align: center;
-      color: #061738;
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-    label {
-      font-weight: bold;
-      color: #091235;
-    }
-    input, select {
-      padding: 0.7rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-    }
-    button {
-      padding: 0.85rem;
-      background-color: #091235;
-      color: #fff;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    button:hover {
-      background-color: #1d2a49;
-    }
-    #quoteResult {
-      margin-top: 2.2rem;
-      padding: 1.5rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      background-color: #e7f5ec;
-      border: 2px solid #88A9C3;
-      border-radius: 12px;
-      color: #0b3d2e;
-    }
-    .back-home {
-      display: block;
-      text-align: center;
-      margin-top: 2rem;
-      text-decoration: none;
-      color: #091235;
-      font-weight: 600;
-    }
-  </style>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '1188332553042659');fbq('track', 'PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1188332553042659&ev=PageView&noscript=1"/></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet" />
+  <style>body {font-family: 'Marcellus', serif; background:#f0f4f8; padding:2rem;} .container {max-width:600px; margin:auto; background:#fff; border-radius:16px; padding:50px 35px; box-shadow:0 12px 24px rgba(0,0,0,0.08);} label {font-weight:bold;} input, select {padding:0.7rem; border:1px solid #ccc; border-radius:6px; font-size:1rem;} button {padding:0.85rem; background:#091235; color:#fff; border:none; border-radius:8px; cursor:pointer;} #quoteResult {margin-top:2rem; background:#e7f5ec; padding:1.5rem; border:2px solid #88A9C3; border-radius:12px; text-align:center; font-weight:bold;}</style>
 </head>
 <body>
   <div class="container">
-    <img src="Main Branding.png" alt="Ohm's Cleaning Services" class="logo">
     <h1>Get Your Free Window Cleaning Quote</h1>
-
-    <form id="quoteForm">
+    <form id="quoteForm" onsubmit="return false;">
       <label for="stories">How many stories is your home?</label>
-      <select id="stories" required>
-        <option value="">-- Select --</option>
-        <option value="1">1 Story</option>
-        <option value="2">2 Stories</option>
-      </select>
-
-      <label for="windows">How many window panes? <br><small style='font-weight:normal;color:#555;'>(Each framed section of glass counts as one pane – a double-hung window usually has 2 panes.)</small></label>
-      <input type="number" id="windows" min="1" required>
-
-            <label for="interiorAdd">Would you like interior window cleaning?</label>
-      <select id="interiorAdd" required>
-        <option value="no">No</option>
-        <option value="yes">Yes</option>
-      </select>
-
+      <select id="stories" required><option value="">-- Select --</option><option value="1">1 Story</option><option value="2">2 Stories</option></select>
+      <label for="windows">How many window panes? <br><small>(Each framed section of glass counts as one pane – a double-hung window usually has 2 panes.)</small></label>
+      <input type="number" id="windows" min="1" required />
+      <label for="interiorAdd">Would you like interior window cleaning?</label>
+      <select id="interiorAdd" required><option value="no">No</option><option value="yes">Yes</option></select>
       <label for="name">Your Name:</label>
-      <input type="text" id="name" required>
-
+      <input type="text" id="name" required />
       <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" required>
-
+      <input type="tel" id="phone" required />
       <label for="promo">Promo Code (optional):</label>
-      <input type="text" id="promo" >
-
+      <input type="text" id="promo" />
       <button type="submit">See My Estimated Quote</button>
     </form>
-
     <div id="quoteResult"></div>
-    <a class="back-home" href="index.html">← Back to Homepage</a>
   </div>
-
   <script>
     document.getElementById("quoteForm").addEventListener("submit", function(e) {
       e.preventDefault();
-
       const stories = document.getElementById("stories").value;
       const panes = parseInt(document.getElementById("windows").value);
-            const interiorAdd = document.getElementById("interiorAdd").value;
+      const interiorAdd = document.getElementById("interiorAdd").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const promo = document.getElementById("promo").value.trim().toUpperCase();
-
-      let price = panes * 5.10;
-
-      if (interiorAdd === "yes") {
-        price += panes * 2.0;
-      }
-
-      price += 17;
-
-      if (stories === "2") {
-        price += 60;
-      }
-
+      let basePrice = panes * 5.10;
+      if (interiorAdd === "yes") { basePrice += panes * 2.0; }
+      basePrice += 17;
+      if (stories === "2") { basePrice += 60; }
+      basePrice = Math.ceil(basePrice / 5) * 5;
+      let originalPrice = basePrice;
       let discount = 0;
-      price = Math.ceil(price / 5) * 5;
-      let minApplied = false;
-      if (price < 149) {
-        price = 149;
-        minApplied = true;
-      }
-      let originalPrice = price;
-      if (promo === "FB25") {
-        discount = 25;
-        price = Math.max(0, price - discount);
-        if (price < 149) price = 149; // reapply min after promo
-      }
-        price = Math.max(0, price - discount);
-      }
-
-      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior Add-on: ${interiorAdd}\nPromo Code: ${promo || 'None'}\nEstimated Quote: $${price.toFixed(2)}`;
-
-      fetch("https://formspree.io/f/xgvkknzp", {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name,
-          phone,
-          message: quoteMessage
-        })
-      })
-      .then(response => response.json())
+      if (promo === "FB25") { discount = 25; }
+      let finalPrice = Math.max(149, originalPrice - discount);
+      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior: ${interiorAdd}\nPromo: ${promo || 'None'}\nQuote: $${finalPrice.toFixed(2)}`;
+      fetch("https://formspree.io/f/xgvkknzp", {method: "POST", headers: {'Accept': 'application/json','Content-Type': 'application/json'}, body: JSON.stringify({ name, phone, message: quoteMessage })})
+      .then(res => res.json())
       .then(data => {
-        console.log("Formspree response:", data);
         fbq('track', 'Lead');
-        let resultText = `<strong>Thanks, ${name}!</strong><br>`;
+        let msg = `<strong>Thanks, ${name}!</strong><br>`;
         if (discount > 0) {
-          resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
-          resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
-          resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!</span>`;
-        } else { resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
-          resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
-          
-            resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!</span>`;
-          }
+          msg += `Original: <s>$${originalPrice.toFixed(2)}</s><br>`;
+          msg += `Discounted: <span>$${finalPrice.toFixed(2)}</span><br>`;
+          msg += `Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!`;
         } else {
-          resultText += `Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price.toFixed(2)}</span>.`;
+          msg += `Your quote is <span>$${finalPrice.toFixed(2)}</span>.`;
         }
-        resultText += `<br><em>Redirecting you to schedule now...</em>`;
-        document.getElementById("quoteResult").innerHTML = resultText;
-
-        setTimeout(() => {
-          window.location.href = "https://calendly.com/ohmscleaningservice";
-        }, 8500);
+        msg += `<br><em>Redirecting to schedule...</em>`;
+        document.getElementById("quoteResult").innerHTML = msg;
+        setTimeout(() => { window.location.href = "https://calendly.com/ohmscleaningservice"; }, 8500);
       })
-      .catch(error => {
-        console.error("Formspree error:", error);
-        alert("There was an error sending your information. Please contact us directly.");
-      });
+      .catch(() => alert("Error sending info. Please contact us."));
     });
   </script>
 </body>
