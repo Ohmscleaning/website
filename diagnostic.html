@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Instant Quote | Ohm's Cleaning Services</title>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1188332553042659');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1188332553042659&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -131,7 +148,7 @@
       const phone = document.getElementById("phone").value;
       const promo = document.getElementById("promo").value.trim().toUpperCase();
 
-      let price = panes * 4.75;
+      let price = panes * 5.10;
 
       if (interiorAdd === "yes") {
         price += panes * 2.0;
@@ -145,10 +162,17 @@
 
       let discount = 0;
       price = Math.ceil(price / 5) * 5;
-      if (price < 149) price = 149;
+      let minApplied = false;
+      if (price < 149) {
+        price = 149;
+        minApplied = true;
+      }
       let originalPrice = price;
       if (promo === "FB25") {
         discount = 25;
+        price = Math.max(0, price - discount);
+        if (price < 149) price = 149; // reapply min after promo
+      }
         price = Math.max(0, price - discount);
       }
 
@@ -169,11 +193,16 @@
       .then(response => response.json())
       .then(data => {
         console.log("Formspree response:", data);
+        fbq('track', 'Lead');
         let resultText = `<strong>Thanks, ${name}!</strong><br>`;
         if (discount > 0) {
           resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
           resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
-          resultText += `<span style='color:#c14c4c;'>Promo "FB25" applied – you saved $${discount.toFixed(2)}!</span>`;
+          if (minApplied) {
+            resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – You saved, but our minimum charge is $149 for any job.</span>`;
+          } else {
+            resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!</span>`;
+          }
         } else {
           resultText += `Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price.toFixed(2)}</span>.`;
         }
