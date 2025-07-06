@@ -21,6 +21,8 @@
       <input type="number" id="windows" min="1" required />
       <label for="interiorAdd">Would you like interior window cleaning?</label>
       <select id="interiorAdd" required><option value="no">No</option><option value="yes">Yes</option></select>
+      <label for="solarScreens">Do you have solar screens?</label>
+      <select id="solarScreens" required><option value="no">No</option><option value="yes">Yes</option></select>
       <label for="name">Your Name:</label>
       <input type="text" id="name" required />
       <label for="phone">Phone Number:</label>
@@ -37,6 +39,7 @@
       const stories = document.getElementById("stories").value;
       const panes = parseInt(document.getElementById("windows").value);
       const interiorAdd = document.getElementById("interiorAdd").value;
+      const solarScreens = document.getElementById("solarScreens").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const promo = document.getElementById("promo").value.trim().toUpperCase();
@@ -44,16 +47,19 @@
       if (interiorAdd === "yes") { basePrice += panes * 2.0; }
       basePrice += 17;
       if (stories === "2") { basePrice += 60; }
+      if (solarScreens === "yes") {
+        basePrice += (stories === "2") ? 100 : 40;
+      }
       basePrice = Math.ceil(basePrice / 5) * 5;
       let discount = 0;
       let finalPrice = basePrice;
-      if (finalPrice < 149) { finalPrice = 149; } // enforce min
+      if (finalPrice < 149) { finalPrice = 149; }
       if (promo === "FB25") {
         discount = 25;
         finalPrice = finalPrice - discount;
         if (finalPrice < 0) { finalPrice = 0; }
       }
-      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior: ${interiorAdd}\nPromo: ${promo || 'None'}\nQuote: $${finalPrice.toFixed(2)}`;
+      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior: ${interiorAdd}\nSolar Screens: ${solarScreens}\nPromo: ${promo || 'None'}\nQuote: $${finalPrice.toFixed(2)}`;
       fetch("https://formspree.io/f/xgvkknzp", {method: "POST", headers: {'Accept': 'application/json','Content-Type': 'application/json'}, body: JSON.stringify({ name, phone, message: quoteMessage })})
       .then(res => res.json())
       .then(data => {
