@@ -46,10 +46,13 @@
       if (stories === "2") { basePrice += 60; }
       basePrice = Math.ceil(basePrice / 5) * 5;
       let discount = 0;
-      if (promo === "FB25") { discount = 25; }
-      let finalPrice = basePrice - discount;
-      if (finalPrice < 149) { finalPrice = 149 - discount; if (finalPrice < 0) finalPrice = 0; }
-      if (finalPrice < 149) { finalPrice = 149; discount = 0; } // protect: don't show fake savings if under min
+      let finalPrice = basePrice;
+      if (finalPrice < 149) { finalPrice = 149; } // enforce min
+      if (promo === "FB25") {
+        discount = 25;
+        finalPrice = finalPrice - discount;
+        if (finalPrice < 0) { finalPrice = 0; }
+      }
       const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior: ${interiorAdd}\nPromo: ${promo || 'None'}\nQuote: $${finalPrice.toFixed(2)}`;
       fetch("https://formspree.io/f/xgvkknzp", {method: "POST", headers: {'Accept': 'application/json','Content-Type': 'application/json'}, body: JSON.stringify({ name, phone, message: quoteMessage })})
       .then(res => res.json())
