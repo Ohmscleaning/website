@@ -198,6 +198,9 @@
         if (discount > 0) {
           resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
           resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
+          resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!</span>`;
+        } else { resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
+          resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
           
             resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!</span>`;
           }
