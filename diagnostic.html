@@ -45,24 +45,18 @@
       basePrice += 17;
       if (stories === "2") { basePrice += 60; }
       basePrice = Math.ceil(basePrice / 5) * 5;
-      let originalPrice = basePrice;
       let discount = 0;
       if (promo === "FB25") { discount = 25; }
-      let finalPrice = originalPrice - discount;
+      let finalPrice = basePrice - discount;
       if (finalPrice < 149) { finalPrice = 149 - discount; if (finalPrice < 0) finalPrice = 0; }
+      if (finalPrice < 149) { finalPrice = 149; discount = 0; } // protect: don't show fake savings if under min
       const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior: ${interiorAdd}\nPromo: ${promo || 'None'}\nQuote: $${finalPrice.toFixed(2)}`;
       fetch("https://formspree.io/f/xgvkknzp", {method: "POST", headers: {'Accept': 'application/json','Content-Type': 'application/json'}, body: JSON.stringify({ name, phone, message: quoteMessage })})
       .then(res => res.json())
       .then(data => {
         fbq('track', 'Lead');
         let msg = `<strong>Thanks, ${name}!</strong><br>`;
-        if (discount > 0) {
-          msg += `Original: <s>$${originalPrice.toFixed(2)}</s><br>`;
-          msg += `Discounted: <span>$${finalPrice.toFixed(2)}</span><br>`;
-          msg += `Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!`;
-        } else {
-          msg += `Your quote is <span>$${finalPrice.toFixed(2)}</span>.`;
-        }
+        msg += `Your quote is <span>$${finalPrice.toFixed(2)}</span>.`;
         msg += `<br><em>Redirecting to schedule...</em>`;
         document.getElementById("quoteResult").innerHTML = msg;
         setTimeout(() => { window.location.href = "https://calendly.com/ohmscleaningservice"; }, 8500);
