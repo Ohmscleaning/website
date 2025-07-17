@@ -3,124 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instant Quote Calculator</title>
+  <title>Instant Quote | Ohm's Cleaning Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      background-color: #f9fbfc;
-      color: #333;
+      font-family: 'Marcellus', serif;
+      background-color: #f0f4f8;
+      color: #14202E;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 50px 35px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+    .logo {
+      display: block;
+      margin: 0 auto 25px;
+      max-width: 160px;
     }
     h1 {
       text-align: center;
-      margin-bottom: 20px;
+      color: #061738;
+      font-size: 2.2rem;
+      margin-bottom: 25px;
     }
-    .form-group {
-      margin-bottom: 20px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
     }
     label {
-      display: block;
-      margin-bottom: 8px;
+      font-weight: bold;
+      color: #091235;
     }
     input, select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 4px;
+      padding: 0.7rem;
       border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
     }
     button {
-      padding: 12px 24px;
+      padding: 0.85rem;
       background-color: #091235;
-      color: white;
-      font-weight: bold;
+      color: #fff;
+      font-weight: 600;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
-    #result {
-      margin-top: 30px;
+    button:hover {
+      background-color: #1d2a49;
+    }
+    #quoteResult {
+      margin-top: 2.2rem;
+      padding: 1.5rem;
       font-size: 1.2rem;
       font-weight: bold;
+      text-align: center;
+      background-color: #e7f5ec;
+      border: 2px solid #88A9C3;
+      border-radius: 12px;
+      color: #0b3d2e;
+    }
+    .back-home {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      text-decoration: none;
+      color: #091235;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
-  <h1>Get Your Instant Quote</h1>
-  <div class="form-group">
-    <label for="story">Number of Stories</label>
-    <select id="story">
-      <option value="1">1 Story</option>
-      <option value="2">2 Stories</option>
-    </select>
+  <div class="container">
+    <img src="Main Branding.png" alt="Ohm's Cleaning Services" class="logo">
+    <h1>Get Your Free Window Cleaning Quote</h1>
+
+    <form id="quoteForm">
+      <label for="stories">How many stories is your home?</label>
+      <select id="stories" required>
+        <option value="">-- Select --</option>
+        <option value="1">1 Story</option>
+        <option value="2">2 Stories</option>
+      </select>
+
+      <label for="windows">How many window panes? <br><small style='font-weight:normal;color:#555;'>(Each framed section of glass counts as one pane – a double-hung window usually has 2 panes.)</small></label>
+      <input type="number" id="windows" min="1" required>
+
+            <label for="interiorAdd">Would you like interior window cleaning?</label>
+      <select id="interiorAdd" required>
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <label for="promo">Promo Code (optional):</label>
+      <input type="text" id="promo" >
+
+      <button type="submit">See My Estimated Quote</button>
+    </form>
+
+    <div id="quoteResult"></div>
+    <a class="back-home" href="index.html">← Back to Homepage</a>
   </div>
-  <div class="form-group">
-    <label for="windows">Number of Windows</label>
-    <input type="number" id="windows" min="1">
-  </div>
-  <div class="form-group">
-    <label for="interior">Add Interior Window Cleaning?</label>
-    <select id="interior">
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="screens">Add Screen Cleaning?</label>
-    <select id="screens">
-      <option value="no">No</option>
-      <option value="yes">Yes</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="promo">Promo Code (optional)</label>
-    <input type="text" id="promo">
-  </div>
-  <button onclick="calculateQuote()">Calculate Quote</button>
-  <div id="result"></div>
 
   <script>
-    function calculateQuote() {
-      const story = parseInt(document.getElementById('story').value);
-      const windows = parseInt(document.getElementById('windows').value);
-      const interior = document.getElementById('interior').value;
-      const screens = document.getElementById('screens').value;
-      const promoCode = document.getElementById('promo').value.trim().toUpperCase();
+    document.getElementById("quoteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-      let basePrice = 0;
-      if (story === 1) {
-        if (windows >= 10 && windows <= 20) basePrice = 179;
-        else if (windows >= 21 && windows <= 25) basePrice = 199;
-        else if (windows >= 26 && windows <= 35) basePrice = 249;
-        else basePrice = 0;
-      } else if (story === 2) {
-        if (windows >= 15 && windows <= 20) basePrice = 209;
-        else if (windows >= 21 && windows <= 25) basePrice = 249;
-        else if (windows >= 26 && windows <= 35) basePrice = 299;
-        else basePrice = 0;
+      const stories = document.getElementById("stories").value;
+      const panes = parseInt(document.getElementById("windows").value);
+            const interiorAdd = document.getElementById("interiorAdd").value;
+      const name = document.getElementById("name").value;
+      const phone = document.getElementById("phone").value;
+      const promo = document.getElementById("promo").value.trim().toUpperCase();
+
+      let price = panes * 4.75;
+
+      if (interiorAdd === "yes") {
+        price += panes * 2.0;
       }
 
-      if (basePrice === 0) {
-        document.getElementById('result').innerText = 'Please contact us for a custom quote.';
-        return;
+      price += 17;
+
+      if (stories === "2") {
+        price += 60;
       }
 
-      let interiorAdd = 0;
-      if (interior === 'yes') {
-        if (windows >= 15 && windows <= 20) interiorAdd = 129;
-        else if (windows >= 21 && windows <= 25) interiorAdd = 149;
-        else if (windows >= 26 && windows <= 35) interiorAdd = 179;
+      let discount = 0;
+      price = Math.ceil(price / 5) * 5;
+      if (price < 149) price = 149;
+      let originalPrice = price;
+      if (promo === "FB25") {
+        discount = 25;
+        price = Math.max(0, price - discount);
       }
 
-      let screenAdd = screens === 'yes' ? 25 : 0;
+      const quoteMessage = `Name: ${name}\nPhone: ${phone}\nStories: ${stories}\nWindow Panes: ${panes}\nInterior Add-on: ${interiorAdd}\nPromo Code: ${promo || 'None'}\nEstimated Quote: $${price.toFixed(2)}`;
 
-      let total = basePrice + interiorAdd + screenAdd;
+      fetch("https://formspree.io/f/xgvkknzp", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          message: quoteMessage
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Formspree response:", data);
+        let resultText = `<strong>Thanks, ${name}!</strong><br>`;
+        if (discount > 0) {
+          resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
+          resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
+          resultText += `<span style='color:#c14c4c;'>Promo "FB25" applied – you saved $${discount.toFixed(2)}!</span>`;
+        } else {
+          resultText += `Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price.toFixed(2)}</span>.`;
+        }
+        resultText += `<br><em>Redirecting you to schedule now...</em>`;
+        document.getElementById("quoteResult").innerHTML = resultText;
 
-      if (promoCode === 'FB25') {
-        total -= 25;
-      }
-
-      document.getElementById('result').innerText = `Your estimated quote is $${total}.`;
-    }
+        setTimeout(() => {
+          window.location.href = "https://calendly.com/ohmscleaningservice";
+        }, 8500);
+      })
+      .catch(error => {
+        console.error("Formspree error:", error);
+        alert("There was an error sending your information. Please contact us directly.");
+      });
+    });
   </script>
 </body>
 </html>
