@@ -33,6 +33,32 @@
       font-size: 2.2rem;
       margin-bottom: 25px;
     }
+    .trust-line {
+      text-align: center;
+      font-size: 1rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .testimonial-box {
+      background-color: #f7fafc;
+      border-left: 4px solid #88A9C3;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      min-height: 100px;
+    }
+    .testimonial-box blockquote {
+      font-style: italic;
+      color: #333;
+    }
+    .testimonial-box cite {
+      display: block;
+      margin-top: 8px;
+      text-align: right;
+      font-size: 0.9rem;
+      color: #666;
+    }
     form {
       display: flex;
       flex-direction: column;
@@ -86,8 +112,15 @@
   <div class="container">
     <img src="Main Branding.png" alt="Ohm's Cleaning Services" class="logo">
     <h1>Get Your Free Window Cleaning Quote</h1>
+    <p class="trust-line">Locally rated 5 stars on Google</p>
+    <div class="testimonial-box">
+      <blockquote id="testimonialText">“Jeremy washed our windows and did a wonderful job! Very reasonable and we will definitely be calling him back! Thank you!”</blockquote>
+      <cite id="testimonialAuthor">– Cindy LaRocca</cite>
+    </div>
 
     <form id="quoteForm">
+      <label>Tell us about your home—</label>
+
       <label for="stories">How many stories is your home?</label>
       <select id="stories" required>
         <option value="">-- Select --</option>
@@ -98,7 +131,7 @@
       <label for="windows">How many window panes? <br><small style='font-weight:normal;color:#555;'>(Each framed section of glass counts as one pane – a double-hung window usually has 2 panes.)</small></label>
       <input type="number" id="windows" min="1" required>
 
-            <label for="interiorAdd">Would you like interior window cleaning?</label>
+      <label for="interiorAdd">Would you like interior window cleaning?</label>
       <select id="interiorAdd" required>
         <option value="no">No</option>
         <option value="yes">Yes</option>
@@ -111,9 +144,9 @@
       <input type="tel" id="phone" required>
 
       <label for="promo">Promo Code (optional):</label>
-      <input type="text" id="promo" >
+      <input type="text" id="promo">
 
-      <button type="submit">See My Estimated Quote</button>
+      <button type="submit">Get My Instant Quote</button>
     </form>
 
     <div id="quoteResult"></div>
@@ -121,12 +154,38 @@
   </div>
 
   <script>
+    const testimonials = [
+      {
+        text: "Jeremy washed our windows and did a wonderful job! Very reasonable and we will definitely be calling him back! Thank you!",
+        author: "– Cindy LaRocca"
+      },
+      {
+        text: "I hired Jeremy to clean them and he did an amazing job. Every window is spotless now, even the ones I thought were beyond saving.",
+        author: "– Trevor G."
+      },
+      {
+        text: "We were very pleased with Ohm's Cleaning. On time, very thorough & tidy. Use this company to know your windows will be super clean.",
+        author: "– Jenny Benedict"
+      },
+      {
+        text: "He did a fabulous job, would highly recommend him.",
+        author: "– Marcia Mansell"
+      }
+    ];
+
+    let testimonialIndex = 0;
+    setInterval(() => {
+      testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+      document.getElementById("testimonialText").innerText = `“${testimonials[testimonialIndex].text}”`;
+      document.getElementById("testimonialAuthor").innerText = testimonials[testimonialIndex].author;
+    }, 5000);
+
     document.getElementById("quoteForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const stories = document.getElementById("stories").value;
       const panes = parseInt(document.getElementById("windows").value);
-            const interiorAdd = document.getElementById("interiorAdd").value;
+      const interiorAdd = document.getElementById("interiorAdd").value;
       const name = document.getElementById("name").value;
       const phone = document.getElementById("phone").value;
       const promo = document.getElementById("promo").value.trim().toUpperCase();
@@ -173,7 +232,7 @@
         if (discount > 0) {
           resultText += `Original Price: <s>$${originalPrice.toFixed(2)}</s><br>`;
           resultText += `<span style='color:#0b3d2e;'>Discounted Price: $${price.toFixed(2)}</span><br>`;
-          resultText += `<span style='color:#c14c4c;'>Promo "FB25" applied – you saved $${discount.toFixed(2)}!</span>`;
+          resultText += `<span style='color:#c14c4c;'>Promo \"FB25\" applied – you saved $${discount.toFixed(2)}!</span>`;
         } else {
           resultText += `Your estimated window cleaning is <span style='color:#0b3d2e;'>$${price.toFixed(2)}</span>.`;
         }
