@@ -123,7 +123,36 @@
       max-width: 700px;
       margin: 30px auto 0;
     }
-  </style>
+  
+.hero-cta input,
+.hero-cta textarea {
+  width: 100%;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
+}
+
+.hero-cta button {
+  background: #FFD700;
+  color: #091235;
+  font-weight: 800;
+  font-size: 1.2rem;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.hero-cta button:hover {
+  background: #f2c200;
+}
+
+</style>
 </head>
 <body>
 
@@ -138,9 +167,15 @@
   <img src="White Main Logo.png" alt="Ohm's Logo"/>
   <h1>Ohm's Cleaning Services</h1>
   <p class="subtitle">Nevada's Faith-Driven Window Cleaning Pros</p>
-  <div class="hero-cta">
-    <a href="https://ohmscleaningservices.com/diagnostic.html">Get My Instant Quote Now</a>
-  </div>
+  <form class="hero-cta" action="https://formspree.io/f/mnnzjdrv" method="POST">
+  <input type="tel" name="phone" placeholder="Your Phone Number" required />
+  <select name="service" required style="width: 100%; max-width: 400px; margin: 10px auto; padding: 12px; font-size: 1rem; border: 1px solid #ccc; border-radius: 8px; display: block;">
+    <option value="" disabled selected>Select a Service Needed</option>
+    <option value="Exterior Window Cleaning">Exterior Window Cleaning</option>
+    <option value="Interior + Exterior Window Cleaning">Interior + Exterior Window Cleaning</option>
+  </select>
+  <button type="submit">Request a Free Quote</button>
+</form>
 </header>
 
 <section id="about">
@@ -158,22 +193,22 @@
   <h2>Our Services</h2>
   <div class="services-grid" style="gap: 15px;">
     <div class="service-block">
-      <img src="Man Cleaning 1.jpg" alt="Exterior Window Cleaning"/>
+      <img src="Jeremy Ext Sque.jpeg" alt="Exterior Window Cleaning"/>
       <h3>Exterior Window Cleaning</h3>
       <p>Crystal-clear exteriors that boost your home's curb appeal and let the light in.</p>
-      <a href="https://ohmscleaningservices.com/diagnostic.html" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
+      <a href="#" onclick="document.querySelector('.hero-cta').scrollIntoView({ behavior: 'smooth' }); return false;" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
     </div>
     <div class="service-block">
       <img src="interior cleaning.jpg" alt="Interior Window Cleaning"/>
       <h3>Interior Window Cleaning</h3>
       <p>Safe and spotless indoor glass cleaning that brightens your living space.</p>
-      <a href="https://ohmscleaningservices.com/diagnostic.html" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
+      <a href="#" onclick="document.querySelector('.hero-cta').scrollIntoView({ behavior: 'smooth' }); return false;" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
     </div>
     <div class="service-block">
-      <img src="man with wfp.jpg" alt="Advanced Cleaning Equipment"/>
+      <img src="Jeremy WFP.jpeg" alt="Advanced Cleaning Equipment"/>
       <h3>Advanced Equipment</h3>
       <p>Water-fed pole systems and pro-grade tools for safe, streak-free cleaning.</p>
-      <a href="https://ohmscleaningservices.com/diagnostic.html" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
+      <a href="#" onclick="document.querySelector('.hero-cta').scrollIntoView({ behavior: 'smooth' }); return false;" style="display:inline-block; margin-top:10px; padding:10px 20px; background:#FFD700; color:#091235; font-weight:600; text-decoration:none; border-radius:6px;">Get a Quote</a>
     </div>
   </div>
 </section>
@@ -207,8 +242,64 @@
     </div>
   </div>
 </section>
+<section id="testimonials">
+  <h2>What Our Clients Are Saying</h2>
+  <div class="testimonial-carousel">
+    <div class="google-review active">
+      <img src="google-logo.png" alt="Google Logo" style="height: 20px; vertical-align: middle;"> 
+      <span class="stars">★★★★★</span>
+      <p>“Ohm’s did an incredible job on our windows. I didn’t realize how much natural light we were missing! Professional, punctual, and polite. Highly recommended.” — Sarah R.</p>
+    </div>
+    <div class="google-review">
+      <img src="google-logo.png" alt="Google Logo" style="height: 20px; vertical-align: middle;"> 
+      <span class="stars">★★★★★</span>
+      <p>“Absolutely phenomenal work by the team. Timely, respectful, and affordable. Will be calling again.” — Cindy LaRocca</p>
+    </div>
+    <div class="google-review">
+      <img src="google-logo.png" alt="Google Logo" style="height: 20px; vertical-align: middle;"> 
+      <span class="stars">★★★★★</span>
+      <p>“Jeremy and his guys were quick and clean. Felt like I had new windows installed. Highly recommend.” — Trevor G.</p>
+    </div>
+  </div>
+</section>
+<style>
+  #testimonials {
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  .testimonial-carousel {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .google-review {
+    display: none;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .google-review.active {
+    display: block;
+  }
+  .stars {
+    color: #FFD700;
+    font-size: 1.2rem;
+    display: block;
+    margin: 5px 0;
+  }
+</style>
+<script>
+  let reviews = document.querySelectorAll('.google-review');
+  let currentReview = 0;
+  setInterval(() => {
+    reviews[currentReview].classList.remove('active');
+    currentReview = (currentReview + 1) % reviews.length;
+    reviews[currentReview].classList.add('active');
+  }, 5000);
+</script>
 
-<section id="contact">
+$1
   <h2>Contact Us</h2>
   <p><strong>Phone:</strong> 702-201-3944</p>
   <p><strong>Email:</strong> ohmscleaning@gmail.com</p>
