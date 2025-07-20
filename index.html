@@ -169,9 +169,9 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<header>
-  <img src="Transparent Gold log.png" alt="Ohm's Logo" style="max-width: 360px; height: auto;"/>
-  <p class="subtitle">Nevada's Faith-Driven Window Cleaning Pros</p>
+<header style="padding: 40px 20px 30px;">
+  <img src="Transparent Gold log.png" alt="Ohm's Logo" style="max-width: 420px; height: auto; margin-bottom: 10px;"/>
+  <p class="subtitle" style="margin-top: 10px; font-size: 1.5rem;">Nevada's Faith-Driven Window Cleaning Pros</p>
   
 </header>
 
@@ -187,6 +187,10 @@
     </select>
     <button type="submit" style="display: block; margin: 15px auto 0;">Request a Free Quote</button>
   </form>
+  <div style="text-align: center; margin-top: 30px;">
+    <p style="font-size: 1.1rem; font-weight: 600;">On mobile? Use our instant quote tool for a faster experience.</p>
+    <a href="https://ohmscleaningservices.com/diagnostic.html" style="display:inline-block; margin-top:10px; padding:12px 24px; background:#2B4257; color:#ffffff; font-weight:600; text-decoration:none; border-radius:8px;">📱 Tap Here for Mobile Instant Quote</a>
+  </div>
 </section>
 
 <section id="about">
@@ -308,12 +312,8 @@
     currentReview = (currentReview + 1) % reviews.length;
     reviews[currentReview].classList.add('active');
   }, 5000);
-document.getElementById('quote-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  showConfirmation();
-});
-</script>
 
+</script>
 <section id="contact" style="padding: 60px 20px; background-color: #f4f8fb; text-align: center;">
   <h2 style="color: #2B4257;">Let's Talk</h2>
   <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 20px;">We’re happy to answer your questions, provide custom quotes, or schedule your next clean. Just give us a ring or shoot us a message.</p>
@@ -347,7 +347,31 @@ document.getElementById('quote-form').addEventListener('submit', function(e) {
 function showConfirmation() {
   const form = document.getElementById('quote-form');
   const confirmation = document.getElementById('quote-confirmation');
-  const formData
+  const formData = new FormData(form);
+
+  fetch('https://formspree.io/f/mnnzjdrv', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      confirmation.style.display = 'block';
+      form.reset();
+      setTimeout(() => confirmation.style.display = 'none', 4000);
+    } else {
+      alert('There was an issue submitting the form. Please try again.');
+    }
+  })
+  .catch(error => {
+    alert('Error: ' + error.message);
+  });
+}
+
+
+</script>
 
 </body>
 </html>
