@@ -167,7 +167,7 @@
   <img src="White Main Logo.png" alt="Ohm's Logo"/>
   <h1>Ohm's Cleaning Services</h1>
   <p class="subtitle">Nevada's Faith-Driven Window Cleaning Pros</p>
-  <form class="hero-cta" action="https://formspree.io/f/mnnzjdrv" method="POST">
+  <form class="hero-cta" action="https://formspree.io/f/mnnzjdrv" method="POST" onsubmit="showConfirmation(event)">
   <input type="tel" name="phone" placeholder="Your Phone Number" required />
   <select name="service" required style="width: 100%; max-width: 400px; margin: 10px auto; padding: 12px; font-size: 1rem; border: 1px solid #ccc; border-radius: 8px; display: block;">
     <option value="" disabled selected>Select a Service Needed</option>
@@ -323,6 +323,20 @@
 <footer>
   &copy; 2025 Ohm's Cleaning Services. Professional, Faith-Driven, Trusted by Locals.
 </footer>
+
+<div id="quote-confirmation" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#2B4257; color:white; padding:15px 25px; border-radius:8px; font-weight:600; box-shadow:0 4px 10px rgba(0,0,0,0.2); z-index:2000;">
+  ✅ Thank you! Someone from our team will reach out shortly.
+</div>
+<script>
+  function showConfirmation(event) {
+    event.preventDefault();
+    const form = event.target;
+    const confirmation = document.getElementById('quote-confirmation');
+    confirmation.style.display = 'block';
+    setTimeout(() => confirmation.style.display = 'none', 4000);
+    form.submit();
+  }
+</script>
 
 </body>
 </html>
