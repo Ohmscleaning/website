@@ -170,7 +170,7 @@
 </nav>
 
 <header>
-  <img src="Transparent Gold log.png" alt="Ohm's Logo" style="max-width: 300px; height: auto;"/>
+  <img src="Transparent Gold log.png" alt="Ohm's Logo" style="max-width: 360px; height: auto;"/>
   <p class="subtitle">Nevada's Faith-Driven Window Cleaning Pros</p>
   
 </header>
@@ -344,33 +344,10 @@ document.getElementById('quote-form').addEventListener('submit', function(e) {
   ✅ Thank you! Someone from our team will reach out shortly.
 </div>
 <script>
-  function showConfirmation() {
+function showConfirmation() {
   const form = document.getElementById('quote-form');
   const confirmation = document.getElementById('quote-confirmation');
-  const formData = new FormData(form);
-
-  fetch('https://formspree.io/f/mnnzjdrv', {
-    method: 'POST',
-    body: formData,
-    headers: {
-      'Accept': 'application/json'
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      confirmation.style.display = 'block';
-      form.reset();
-      setTimeout(() => confirmation.style.display = 'none', 4000);
-    } else {
-      alert('There was an issue submitting the form. Please try again.');
-    }
-  })
-  .catch(error => {
-    alert('Error: ' + error.message);
-  });
-}
-  }
-</script>
+  const formData
 
 </body>
 </html>
